@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Shashank Singh | iOS Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root {
+  --bg-main:#0b0c10;
+  --card-bg:rgba(255,255,255,0.08);
+  --text-primary:#ffffff;
+  --text-secondary:#b5b5b8;
+  --accent:#0a84ff;
+  --radius:20px;
+  --max-width:1100px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
+  background:var(--bg-main);
+  color:var(--text-primary);
+  line-height:1.6;
+}
+
+/* BACKGROUND BLOBS */
+.blob{
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,var(--accent),transparent 60%);
+  filter:blur(120px);
+  opacity:.45;
+  z-index:-1;
+  animation:float 14s ease-in-out infinite;
+}
+.blob.one{top:-120px;left:-150px;}
+.blob.two{bottom:-120px;right:-150px;animation-delay:4s;}
+
+section{padding:110px 24px;}
+.container{max-width:var(--max-width);margin:auto;}
+
+h1{font-size:64px;margin-bottom:10px;}
+h2{font-size:34px;color:var(--text-secondary);}
+h3{font-size:28px;margin-bottom:20px;}
+h4{margin-bottom:10px;}
+
+p,li{
+  font-size:18px;
+  color:var(--text-secondary);
+}
+
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;}
+.apple{font-size:26px;color:var(--accent);margin-bottom:16px;}
+
+.cta{
+  display:inline-block;
+  margin-top:40px;
+  padding:14px 36px;
+  background:linear-gradient(135deg,#0a84ff,#5ac8fa);
+  color:#fff;
+  border-radius:999px;
+  font-weight:500;
+  transition:transform .3s,box-shadow .3s;
+}
+.cta:hover{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 25px 60px rgba(10,132,255,.5);
+  text-decoration:none;
+}
+
+/* GLASS */
+.glass{
+  background:var(--card-bg);
+  backdrop-filter:blur(18px);
+  border-radius:var(--radius);
+  padding:40px;
+  margin-bottom:40px;
+  box-shadow:0 30px 60px rgba(0,0,0,.45);
+}
+
+/* SKILLS */
+.skills{display:flex;flex-wrap:wrap;gap:14px;}
+.skill{
+  padding:10px 18px;
+  background:rgba(255,255,255,.12);
+  border-radius:999px;
+  font-size:14px;
+}
+
+/* PROJECTS */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+.project-card{
+  background:var(--card-bg);
+  backdrop-filter:blur(16px);
+  padding:32px;
+  border-radius:var(--radius);
+  transition:transform .3s,box-shadow .3s;
+}
+.project-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 70px rgba(0,0,0,.6);
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  font-size:14px;
+  color:var(--text-secondary);
+}
+
+/* REVEAL ANIMATIONS */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+.slide-left{transform:translateX(-60px);}
+.slide-right{transform:translateX(60px);}
+.slide-left.active,.slide-right.active{transform:translateX(0);}
+
+/* KEYFRAMES */
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(40px);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container reveal">
+    <div class="apple"> iOS Developer</div>
+    <h1>Shashank Singh</h1>
+    <h2>Building scalable, production-grade iOS applications</h2>
+    <p>
+      Results-driven iOS developer with expertise in Swift, SwiftUI,
+      clean architecture, and real-time systems.
+    </p>
+    <a href="#projects" class="cta">View My Work</a>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section>
+  <div class="container glass reveal">
+    <h3>Summary</h3>
+    <p>
+      iOS Developer with proven experience delivering large-scale consumer-facing
+      applications including Namo Bharat Connect and Barnes & Noble.
+      Strong focus on MVVM architecture, performance optimization,
+      localization, accessibility, and App Store deployments.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section>
+  <div class="container glass reveal">
+    <h3>Technical Skills</h3>
+    <div class="skills">
+      <span class="skill">Swift</span><span class="skill">SwiftUI</span>
+      <span class="skill">UIKit</span><span class="skill">Combine</span>
+      <span class="skill">Objective-C</span><span class="skill">MVVM</span><span class="skill">MVC</span>
+      <span class="skill">REST APIs</span><span class="skill">Core Data</span>
+      <span class="skill">Realm</span><span class="skill">Firebase</span>
+      <span class="skill">XCTest</span><span class="skill">Git</span>
+      <span class="skill">TestFlight</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+  <div class="container glass reveal">
+    <h3>Professional Experience</h3>
+    <p><b>Bahwan Cybertek — iOS Developer (Aug 2022 – Present)</b></p>
+    <ul>
+      <li>Developed and maintained high-traffic production iOS applications.</li>
+      <li>Implemented booking, QR ticketing, secure payments, and real-time updates.</li>
+      <li>Architected scalable modules using MVVM, Coordinators, and DI.</li>
+      <li>Improved stability by reducing crashes via Firebase Crashlytics.</li>
+      <li>Enabled offline support using Core Data.</li>
+      <li>Delivered multilingual & accessible UI (VoiceOver).</li>
+      <li>Managed App Store and TestFlight releases.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- COMPANY PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h3 class="reveal">Workplace Projects
+</h3>
+
+    <div class="projects-grid">
+      <div class="project-card reveal slide-left">
+        <h4>Namo Bharat Connect</h4>
+        <p>End-to-end ticketing & travel app for India’s rapid rail system.</p>
+        <ul>
+          <li>Role: iOS Developer</li>
+          <li>QR ticketing, live train updates</li>
+          <li>Swift, UIKit, MVVM, Core Data</li>
+        </ul>
+        <a href="https://apps.apple.com/in/app/namo-bharat-connect/id6448940583" target="_blank">View on App Store →</a>
+      </div>
+
+      <div class="project-card reveal slide-right">
+        <h4>Barnes & Noble</h4>
+        <p>Legacy eBook reader modernization and maintenance.</p>
+        <ul>
+          <li>Objective-C to Swift migration</li>
+          <li>UI fixes, dark mode, XCTest</li>
+        </ul>
+        <a href="htt" target="_blank">View on Git Hub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB PROJECTS -->
+<section>
+  <div class="container">
+    <h3 class="reveal">GitHub Projects</h3>
+
+    <div class="projects-grid">
+      <div class="project-card reveal slide-left">
+        <h4>Coffee Today</h4>
+        <p>SwiftUI app demonstrating clean MVVM architecture.</p>
+        <ul>
+          <li>SwiftUI, Combine</li>
+          <li>Reusable components</li>
+        </ul>
+                <a href="htt" target="_blank">View on Git Hub →</a>
+
+      </div>
+
+      <div class="project-card reveal slide-right">
+        <h4>Car Health</h4>
+        <p>Vehicle diagnostics app concept.</p>
+        <ul>
+          <li>OBD data visualization</li>
+          <li>Swift, UIKit</li>
+        </ul>
+        <a href="htt" target="_blank">View on Git Hub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <div class="container glass reveal">
+    <h3>Contact</h3>
+    <p>📞 <a href="tel:+919340044657">+91 9340044657</a></p>
+    <p>📧 <a href="mailto:shashanksinghmr.calm@gmail.com">shashanksinghmr.calm@gmail.com</a></p>
+    <p>🔗 <a href="https://linkedin.com/in/shashanksingh2831" target="_blank">linkedin.com/in/shashanksingh2831</a></p>
+  </div>
+</section>
+
+<footer>
+© 2026 Shashank Singh · Crafted with  inspiration
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const revealOnScroll=()=>{
+  reveals.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      el.classList.add('active');
+    }
+  });
+};
+window.addEventListener('scroll',revealOnScroll);
+revealOnScroll();
+</script>
+
+</body>
+</html>
