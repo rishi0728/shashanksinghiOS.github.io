@@ -34,7 +34,7 @@ body {
   background: var(--bg-main);
   color: var(--text-primary);
   line-height: 1.4;
-  padding-bottom: 90px;
+  padding-bottom: 110px; /* Increased to account for floating capsule layout */
 }
 
 .ambient-glow {
@@ -177,35 +177,67 @@ a:hover { text-decoration: underline; }
 }
 .metric-num { font-size: 24px; font-weight: 700; color: var(--apple-green); margin-top: 4px; }
 
+/* UPGRADED iOS TAB BAR (GLASSMORPHISM & FLOATING DESIGN) */
 .ios-tab-bar {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 84px;
-  background: rgba(28, 28, 30, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 500px;
+  height: 64px;
+  background: rgba(28, 28, 30, 0.45);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
   display: flex;
   justify-content: space-around;
-  padding-top: 8px;
-  padding-bottom: 24px;
-  z-index: 999;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 9999;
+  box-sizing: border-box;
 }
+
 .tab-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--text-secondary);
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
   font-size: 10px;
-  font-weight: 500;
-  gap: 4px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  gap: 5px;
   cursor: pointer;
-  width: 60px;
+  height: 100%;
+  width: 20%;
+  transition: color 0.25s cubic-bezier(0.25, 1, 0.5, 1), transform 0.2s ease;
 }
-.tab-item i { width: 22px; height: 22px; }
-.tab-item.active { color: var(--apple-blue); }
+
+.tab-item:active {
+  transform: scale(0.9);
+}
+
+.tab-item i {
+  width: 21px;
+  height: 21px;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tab-item.active {
+  color: var(--apple-blue);
+  text-shadow: 0 0 12px rgba(10, 132, 255, 0.3);
+}
+
+.tab-item.active i {
+  transform: translateY(-2px);
+  color: var(--apple-blue);
+  filter: drop-shadow(0 2px 8px rgba(10, 132, 255, 0.5));
+}
 
 section { scroll-margin-top: 20px; padding: 24px 0; }
 .hero-sec { padding-top: 40px; padding-bottom: 20px; }
@@ -247,7 +279,6 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
       </p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         <a href="#contact" class="cta-button"><i data-lucide="mail" style="width:16px; height:16px;"></i> Contact Me</a>
-      
       </div>
     </div>
   </section>
@@ -342,7 +373,7 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
 
   <section id="work">
     <h3 style="padding-left: 4px;"><i data-lucide="layout-grid"></i> Production Architectural Targets</h3>
-     
+       
     <div class="app-card">
       <div>
         <div class="app-header">
@@ -400,7 +431,7 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
   <section id="education">
     <div class="ios-sheet">
       <h3><i data-lucide="graduation-cap"></i> Diagnostics & Education Context</h3>
-       
+         
       <p style="margin: 0 0 12px 0;">
         <b>B.Tech &bull; Electronics & Communication Engineering</b><br>
         <span style="font-size: 13.5px; color: var(--text-secondary);">Rungta College of Engineering & Technology (Graduated 2022) &bull; Evaluation Index: 73%</span>
@@ -410,7 +441,7 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
         <b>Certification In Progress</b><br>
         <span style="font-size: 13.5px; color: var(--text-secondary);">iOS & Swift - The Complete iOS App Development Bootcamp</span>
       </p>
-       
+         
       <div style="background: rgba(255,255,255,0.02); padding: 16px; border-radius: var(--radius-ios); border: 1px solid rgba(255,255,255,0.04);">
         <h4 style="margin: 0 0 12px 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;">
           <i data-lucide="activity" style="color: var(--apple-green); width:16px; height:16px;"></i> LeetCode Core Telemetry
@@ -418,7 +449,7 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
          <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: #30d158; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">
   <span style="width: 8px; height: 8px; background-color: #30d158; border-radius: 50%; display: inline-block; animation: pure-blink 1s infinite alternate;"></span>
   Live Data
-  
+   
   <style>
     @keyframes pure-blink {
       0% { opacity: 0.2; transform: scale(0.9); }
@@ -445,7 +476,7 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
           <div class="metric-box">
             <div style="font-size: 12px; color: var(--text-secondary);">Active Run-Streak</div>
             <div class="metric-num" id="lc-streak-count" style="color: #ff9500; font-size: 24px;">Syncing...</div>
-          
+          </div>
         </div>
 
         <div style="margin-top: 16px;">
@@ -561,13 +592,6 @@ async function fetchLeetCodeMetrics() {
         document.getElementById('lc-rank-raw').innerText = "N/A";
         document.getElementById('lc-percentile').innerText = "Top 12%";
       }
-
-      // Parse Total submissions text secondary data
-    //   if(data.totalSubmissions && data.totalSubmissions[0]) {
-    //     document.getElementById('lc-total-sub').innerText = `${data.totalSubmissions[0].submissions.toLocaleString()} total subs`;
-    //   } else {
-    //     document.getElementById('lc-total-sub').innerText = "Sync Complete";
-    //   }
        
       let submissionData = {};
       if (typeof data.submissionCalendar === 'string') {
@@ -661,7 +685,6 @@ function fallbackMetrics() {
   document.getElementById('lc-rank-raw').innerText = "#582,341";
   document.getElementById('lc-percentile').innerText = "Top 11.6%";
   document.getElementById('lc-streak-count').innerText = "Active";
-  document.getElementById('lc-total-sub').innerText = "Production Default Cache";
    
   const gridContainer = document.getElementById('streak-grid');
   gridContainer.innerHTML = '';
