@@ -468,33 +468,7 @@ section { scroll-margin-top: 20px; padding: 24px 0; }
               <span id="lc-hard" class="lc-sub-hard">H: -</span>
             </div>
           </div>
-          <div class="metric-box">
-            <div style="font-size: 12px; color: var(--text-secondary);">Global Rank</div>
-            <div class="metric-num" id="lc-rank-raw" style="color: var(--apple-cyan); font-size: 20px; padding-top: 4px;">...</div>
-            <div style="font-size: 10px; color: var(--text-secondary);" id="lc-percentile">Top --%</div>
-          </div>
-          <div class="metric-box">
-            <div style="font-size: 12px; color: var(--text-secondary);">Active Run-Streak</div>
-            <div class="metric-num" id="lc-streak-count" style="color: #ff9500; font-size: 24px;">Syncing...</div>
-          </div>
-        </div>
-
-        <div style="margin-top: 16px;">
-          <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 500;">Runtime Contribution Grid (60 Days)</div>
-          <div id="streak-grid" style="
-            display: grid; 
-            grid-template-rows: repeat(7, 10px); 
-            grid-auto-flow: column;
-            grid-auto-columns: 10px;
-            gap: 3px; 
-            overflow-x: auto; 
-            padding-bottom: 4px;
-            scrollbar-width: none;
-          "></div>
-        </div>
-
-        <div style="margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px; font-size: 11px; color: var(--text-secondary); line-height: 1.35;">
-          <b style="color: var(--apple-cyan);">Telemetry Engine Equation:</b> Global Standing is dynamically isolated via <code style="color: #fff; background: rgba(255,255,255,0.06); padding: 1px 4px; border-radius: 4px;">(Global Rank ÷ 5,000,000 Active Accounts) × 100</code> inside the runtime stream parser block to track relative metrics.
+        
         </div>
       </div>
     </div>
@@ -677,25 +651,30 @@ function renderStreakGrid(submissionCalendar) {
   document.getElementById('lc-streak-count').innerText = `${activeStreak} Days`;
 }
 
-function fallbackMetrics() {
-  document.getElementById('lc-solved').innerText = "150+";
-  document.getElementById('lc-easy').innerText = "E: 65";
-  document.getElementById('lc-med').innerText = "M: 70";
-  document.getElementById('lc-hard').innerText = "H: 15";
-  document.getElementById('lc-rank-raw').innerText = "#582,341";
-  document.getElementById('lc-percentile').innerText = "Top 11.6%";
-  document.getElementById('lc-streak-count').innerText = "Active";
-   
-  const gridContainer = document.getElementById('streak-grid');
-  gridContainer.innerHTML = '';
-  for(let i = 0; i < 60; i++) {
-    const square = document.createElement('div');
-    square.style.width = '10px';
-    square.style.height = '10px';
-    square.style.borderRadius = '2px';
-    square.style.backgroundColor = Math.random() > 0.7 ? 'rgba(48, 209, 88, 0.5)' : 'rgba(255, 255, 255, 0.05)';
-    gridContainer.appendChild(square);
-  }
+// LIVE CORE TELEMETRY ENGINE PIPELINE
+async function fetchLeetCodeMetrics() {
+    const username = "user1024gf";
+    const url = `https://leetcode-api-faisalshohag.vercel.app/${username}`;
+
+    try {
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error("API Error");
+
+        const data = await response.json();
+
+        document.getElementById("lc-solved").textContent = data.totalSolved ?? 0;
+        document.getElementById("lc-easy").textContent = `E: ${data.easySolved ?? 0}`;
+        document.getElementById("lc-med").textContent = `M: ${data.mediumSolved ?? 0}`;
+        document.getElementById("lc-hard").textContent = `H: ${data.hardSolved ?? 0}`;
+
+    } catch (e) {
+        document.getElementById("lc-solved").textContent = "--";
+        document.getElementById("lc-easy").textContent = "E: --";
+        document.getElementById("lc-med").textContent = "M: --";
+        document.getElementById("lc-hard").textContent = "H: --";
+
+        console.error(e);
+    }
 }
 
 fetchLeetCodeMetrics();
